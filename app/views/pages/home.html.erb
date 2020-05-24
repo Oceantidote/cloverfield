@@ -1,6 +1,8 @@
 <div class="vid" onclick="hideVid()">
   <iframe class="vidPlay" src="https://www.youtube.com/embed/710e9ZSYtdM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+
+
 <div class="badger" onclick="hideBadger()">
   <div class="rel">
     <%= link_to "https://www.leracshack.com/", target: "_blank", class: "rac conts" do %>
@@ -27,25 +29,33 @@
     <% end %>
   </div>
 </div>
+
+
 <div class="welcome" id="welcome">
   <form>
     <div id="clicky" class="inner_form">
-      <h1 style="color: black;">FIND A FOUR LEAF CLOVER TO MAKE A WISH</h1>
+      <h1 style="color: black;">FIND <%= @title %> TO MAKE A WISH</h1>
       <h3>Be quick though, you only have <span class="secs" id="secs">30</span><span class='secs'> secs</span> until it changes place!</h3>
     </div>
   </form>
 </div>
-<div class="form" id="form">
+
+
+<div class="form" id="form" onclick="hideForm()">
   <form action="/" method="POST" class="inner_form">
     <h1 class="black">CONGRATULATIONS!</h1>
-    <h3>You found the four leaf clover, time to make a wish...</h3>
+    <h3>You found <%= @title == "WALLY" ? @title.capitalize : @title.downcase %>, time to make a wish...</h3>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <input type="text" name="wish[wish]" placeholder="I wish I was a mermaid..." class="inp">
     <input type="submit" value="MAKE YOUR WISH" class="form-btn">
   </form>
 </div>
-<div class="field" id="field">
+
+
+<div class="field <%= @valid + "_bg" %>" id="field" data-valid="<%= @valid %>" data-invalid="<%= @invalid %>">
 </div>
+
+
 <script>
   let secs = 30;                  //  set your counter to 1
 
@@ -81,6 +91,8 @@
     event.target.style.display = "none";
   })
   let field = document.getElementById("field");
+  let valid = field.dataset.valid
+  let invalid = field.dataset.invalid
   let w = field.clientWidth
   let h = field.clientHeight
   let n = 360
@@ -91,11 +103,11 @@
   let daisy = Math.floor(Math.random() * num)
   for (i = 0; i < n; i++) {
     if (i == num) {
-      field.insertAdjacentHTML("afterbegin",`<div class="leaf four_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
+      field.insertAdjacentHTML("afterbegin",`<div class="leaf ${valid} four_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
     } else if ( i == daisy) {
       field.insertAdjacentHTML("afterbegin",`<div class="daisy" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
     } else {
-      field.insertAdjacentHTML("afterbegin",`<div class="leaf three_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
+      field.insertAdjacentHTML("afterbegin",`<div class="leaf ${invalid} three_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
     }
   }
   document.querySelector(".four_leaf").addEventListener("click", () => {
@@ -133,6 +145,10 @@
       shuffle()
       myLoop();
     }, 30000)
+  }
+
+  function hideForm() {
+    document.querySelector(".form").classList.toggle("show")
   }
 
   function hideBadger() {

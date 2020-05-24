@@ -1,3 +1,34 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// CLOVER
+.clover {
+  background-image: image-url("four_leaf.png");
+}
+.clover_null {
+  background-image: image-url("three_leaf.png");
+}
+.clover_bg {
+}
+
+// HAYSTACK
+.haystack {
+  background-image: image-url("needle.png")
+}
+.haystack_null {
+}
+.haystack_bg {
+  background-image: image-url("haystack.jpg");
+}
+
+// WALDO
+.waldo {
+  background-image: image-url("waldo.png");
+  // background-color: red;
+}
+.waldo_null {
+}
+.waldo_bg {
+  background-image: image-url("waldo_bg.jpg");
+}

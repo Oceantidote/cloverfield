@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ @import "pages";
+
  .wrapper {
    height: 100%;
    width: 100%;
@@ -202,7 +204,6 @@ body {
 }
 .four_leaf {
   background-size: cover;
-  background-image: image-url("four_leaf.png");
   transition-duration: 0.5s;
   cursor: pointer;
   z-index: 6;
@@ -216,7 +217,6 @@ body {
 }
 .three_leaf {
   background-size: cover;
-  background-image: image-url("three_leaf.png");
 }
 
 @keyframes slideInFromLeft {
