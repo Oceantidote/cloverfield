@@ -5,6 +5,9 @@
 
 <div class="badger" onclick="hideBadger()">
   <div class="rel">
+    <%= link_to "https://www.youtube.com/user/josephdcarter", class: "minkenry conts" do %>
+      <%= image_tag "mink", alt: "alttext", class: "icon" %>
+    <% end %>
     <%= link_to wishes_path, class: "wishes conts" do %>
       <h3>WISHES</h3>
     <% end %>
@@ -124,8 +127,6 @@
       field.insertAdjacentHTML("afterbegin",`<div class="leaf ${valid} four_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
     } else if ( i == daisy) {
       field.insertAdjacentHTML("afterbegin",`<div class="daisy" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
-    } else if (i == mink) {
-      field.insertAdjacentHTML("afterbegin",`<a href="https://www.youtube.com/user/josephdcarter" target="_blank" class="minky leaf four_leaf" style="width: ${square_width}px; height: ${square_width}px;"></a>`)
     } else {
       field.insertAdjacentHTML("afterbegin",`<div class="leaf ${invalid} three_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
     }

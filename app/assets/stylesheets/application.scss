@@ -172,14 +172,24 @@ body {
   opacity: 1;
   transform: translateY(15px);
 }
-.minky {
-  background-image: image-url("mink.png");
+.minkenry {
+  padding: 10px;
+  border-color: #440203;
+  border-radius: 50%;
+  bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
 }
 .ru {
   border-color: pink;
   z-index: 200;
-  left: calc(50% - 113px);
+  left: calc(50% - 200px);
   top: calc(50% - 154px);
+  width: 330px;
   /*position: absolute;
   top: calc(50% - 225px);
   left: calc(50% - 75px);*/
