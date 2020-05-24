@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     snowboarder: { title: "the SNOWBOARDER"},
     candle: { title: "the CANDLE amongst the LANTERNS"},
     mink: { title: "the MINK amongst the BEAVERS"},
-    et: { title: "ET amongst the TOYS"}
+    et: { title: "E.T. amongst the TOYS"}
   }
 
 
