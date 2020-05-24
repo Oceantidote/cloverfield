@@ -284,6 +284,10 @@ h3 {
   z-index: 9999 !important;
   transform: scale(1.2);
 }
+.wish:focus {
+  z-index: 9999 !important;
+  transform: scale(1.2);
+}
 .bounce {
   opacity: 1;
   transform: translateY(-15px);
