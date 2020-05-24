@@ -5,7 +5,8 @@ class PagesController < ApplicationController
     waldo: { title: "WALLY" },
     queen: { title: "the QUEEN"},
     snowboarder: { title: "the SNOWBOARDER"},
-    candle: { title: "the CANDLE amongst the LANTERNS"}
+    candle: { title: "the CANDLE amongst the LANTERNS"},
+    mink: { title: "the MINK amongst the BEAVERS"}
   }
 
 
