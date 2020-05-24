@@ -41,7 +41,8 @@
 </div>
 
 
-<div class="form" id="form" onclick="hideForm()">
+<div class="form" id="form">
+  <div class="form_bg"></div>
   <form action="/" method="POST" class="inner_form">
     <h1 class="black">CONGRATULATIONS!</h1>
     <h3>You found <%= @title == "WALLY" ? @title.capitalize : @title.downcase %>, time to make a wish...</h3>
@@ -147,6 +148,8 @@
     }, 30000)
   }
 
+
+
   function hideForm() {
     document.querySelector(".form").classList.toggle("show")
   }
@@ -158,6 +161,10 @@
   function hideVid() {
     document.querySelector(".vid").classList.toggle("show")
   }
+
+  document.querySelector(".form_bg").addEventListener("click",(event) => {
+    document.getElementById("form").classList.toggle("show")
+  })
 
   myLoop();
   document.querySelector(".daisy").addEventListener("click", () => {
