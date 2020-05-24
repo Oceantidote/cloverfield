@@ -9,6 +9,7 @@ class PagesController < ApplicationController
 
   def wishes
     @wishes = Wish.order(created_at: :desc).pluck(:wish)
+    @wishes.delete("")
   end
 
   private
