@@ -32,10 +32,13 @@
     //   document.querySelectorAll(".wish")[0].classList.add("fade")
     // }, 4000)
   }, 30)
-  let i = 1
+  let i = 0
   function myLoop() {
-    i ++
     setTimeout(function() {
+      i ++
+      if (i == markers.length) {
+        i = 0
+      }
       let l_offset = Math.floor(Math.random() * (width - 400))
       if (l_offset < 0) {
         l_offset = 0;
@@ -45,7 +48,7 @@
         t_offset = 0;
       }
       let color = Math.floor(Math.random()*16777215).toString(16);
-      let element = `<h2 class="wish" id="wish${i}" style="z-index: ${i + 1};border-color: #${color}; color: #${color};top: ${t_offset}px; left:${l_offset}px;"><strong>${sample(markers)}</strong></h2>`
+      let element = `<h2 class="wish" id="wish${i}" style="z-index: ${i + 1};border-color: #${color}; color: #${color};top: ${t_offset}px; left:${l_offset}px;"><strong>${markers[i]}</strong></h2>`
       wishes.insertAdjacentHTML("afterbegin",
         element
         )
