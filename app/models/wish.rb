@@ -4,6 +4,10 @@ class Wish < ApplicationRecord
   private
 
   def capitalise
-    self.wish = self.wish.split(" ").first.capitalize + " " + self.wish.split(" ")[1..-1].join(" ")
+    if !self.wish.split(" ").empty?
+      self.wish = self.wish.split(" ").first.capitalize + " " + self.wish.split(" ")[1..-1].join(" ")
+    else
+      self.wish = self.wish.capitalize
+    end
   end
 end
