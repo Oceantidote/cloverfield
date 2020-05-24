@@ -1,9 +1,20 @@
+<div class="vid" onclick="hideVid()">
+  <iframe class="vidPlay" src="https://www.youtube.com/embed/710e9ZSYtdM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 <div class="badger" onclick="hideBadger()">
   <div class="rel">
+    <%= link_to "https://www.leracshack.com/", target: "_blank", class: "rac conts" do %>
+      <h3>If you like<br>melted cheese...</h3>
+      <%= image_tag image_path("rac.png"), alt: "Le Rac Shack - Raclette catering specialists", class: "icon" %>
+    <% end %>
     <%= link_to "https://www.lewagon.com/", target: "_blank", class: "wagon conts" do %>
       <%= image_tag image_path("wagon.png"), alt: "Le Wagon", class: "icon" %>
       <h3 class="wagon-h">Like to know how<br>to build this?</h3>
     <% end %>
+    <div class="conts me">
+      <%= image_tag image_path("me.png"), alt: "An boy idiot, man genius", class: "icon" %>
+      <h3 class="wagon-h">I you like<br> nonsense videos</h3>
+    </div>
     <div class="ru conts">
       <%= link_to "https://lencheslakes.co.uk/", target: "_blank" do  %>
         <%= image_tag image_path("badger.png"), alt: "A lovely Badger", class: "icon" %>
@@ -128,8 +139,15 @@
     document.querySelector(".badger").classList.toggle("show")
   }
 
+  function hideVid() {
+    document.querySelector(".vid").classList.toggle("show")
+  }
+
   myLoop();
   document.querySelector(".daisy").addEventListener("click", () => {
     hideBadger()
+  })
+  document.querySelector(".me").addEventListener("click", () => {
+    hideVid()
   })
 </script>
