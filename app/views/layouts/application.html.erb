@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Clover</title>
+    <title>Wish upon a Clover</title>
+
+
+    <meta name="description" content="Granting wishes to everyone, one Four Leafed Clover at a time" />
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="Granting wishes to everyone, one Four Leafed Clover at a time"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="<%= image_path('four_leaf.png') %>"
+    />
+    <meta property="og:description" content="Granting wishes to everyone, one Four Leafed Clover at a time"
+    />
+    <meta property="og:site_name" content="Wish upon a Clover" />
+
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag asset_path('four_leaf.png') %>
