@@ -3,8 +3,10 @@ class PagesController < ApplicationController
   end
 
   def create
-    Wish.create(wish_params)
-    redirect_to wishes_path
+    @wish = Wish.new(wish_params)
+    if @wish.save
+      redirect_to wishes_path
+    end
   end
 
   def wishes
