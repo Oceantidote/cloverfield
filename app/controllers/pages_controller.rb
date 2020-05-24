@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   TOPICS = {
-    clover: { title: "THE FOUR LEAF CLOVER"},
-    haystack: { title: "THE NEEDLE IN THE HAYSTACK"},
+    clover: { title: "the FOUR LEAF CLOVER"},
+    haystack: { title: "the NEEDLE in the HAYSTACK"},
     waldo: { title: "WALLY" },
-    queen: { title: "THE QUEEN"}
+    queen: { title: "the QUEEN"}
   }
 
 

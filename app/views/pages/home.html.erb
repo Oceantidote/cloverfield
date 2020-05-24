@@ -34,7 +34,7 @@
 <div class="welcome" id="welcome">
   <form>
     <div id="clicky" class="inner_form">
-      <h1 style="color: black;">FIND <%= @title %> TO MAKE A WISH</h1>
+      <h1 style="color: black;">FIND <%= @title.upcase %> TO MAKE A WISH</h1>
       <h3>Be quick though, you only have <span class="secs" id="secs">30</span><span class='secs'> secs</span> until it changes place!</h3>
     </div>
   </form>
@@ -45,7 +45,7 @@
   <div class="form_bg"></div>
   <form action="/" method="POST" class="inner_form">
     <h1 class="black">CONGRATULATIONS!</h1>
-    <h3>You found <%= @title == "WALLY" ? @title.capitalize : @title.downcase %>, time to make a wish...</h3>
+    <h3>You found <%= @title %>, time to make a wish...</h3>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
     <input type="text" name="wish[wish]" placeholder="I wish I was a mermaid..." class="inp">
     <input type="submit" value="MAKE YOUR WISH" class="form-btn">
