@@ -4,25 +4,41 @@
   <% end %>
 </div>
 <script>
-  let wishes = document.getElementById("wishes");
-  wishes.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-  let width = wishes.clientWidth
-  let height = wishes.clientHeight
-  const markers = JSON.parse(wishes.dataset.wishes);
+  if (wishes) {
+    wishes = document.getElementById("wishes");
+    wishes.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+    width = wishes.clientWidth
+    height = wishes.clientHeight
+    Tcolor = Math.floor(Math.random()*16777215).toString(16);
+    li_offset = Math.floor(Math.random() * (width - 400))
+    ti_offset = Math.floor(Math.random() * (height - 200))
+    markers = JSON.parse(wishes.dataset.wishes);
+    element = `<h2 class="wish" id="wish0" style="z-index: 1;color: #${Tcolor};border-color: #${Tcolor};top: ${ti_offset}px; left:${li_offset}px;"><strong>${markers[0]}</strong></h2>`
+    i = 0
+    z = 1
+  } else {
+    let wishes = document.getElementById("wishes");
+    wishes.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+    let width = wishes.clientWidth
+    let height = wishes.clientHeight
+    let Tcolor = Math.floor(Math.random()*16777215).toString(16);
+    let li_offset = Math.floor(Math.random() * (width - 400))
+    let ti_offset = Math.floor(Math.random() * (height - 200))
+    let markers = JSON.parse(wishes.dataset.wishes);
+    let element = `<h2 class="wish" id="wish0" style="z-index: 1;color: #${Tcolor};border-color: #${Tcolor};top: ${ti_offset}px; left:${li_offset}px;"><strong>${markers[0]}</strong></h2>`
+    let i = 0
+    let z = 1
+  }
 
   function sample(array) {
     return array[Math.floor ( Math.random() * array.length )]
   }
-  let Tcolor = Math.floor(Math.random()*16777215).toString(16);
-  let li_offset = Math.floor(Math.random() * (width - 400))
   if (li_offset < 0) {
     li_offset = 0;
   }
-  let ti_offset = Math.floor(Math.random() * (height - 200))
   if (ti_offset < 0) {
     ti_offset = 0;
   }
-  let element = `<h2 class="wish" id="wish0" style="z-index: 1;color: #${Tcolor};border-color: #${Tcolor};top: ${ti_offset}px; left:${li_offset}px;"><strong>${markers[0]}</strong></h2>`
   wishes.insertAdjacentHTML("afterbegin",
     element
     )
@@ -32,8 +48,6 @@
     //   document.querySelectorAll(".wish")[0].classList.add("fade")
     // }, 4000)
   }, 30)
-  let i = 0
-  let z = 1
   function myLoop() {
     setTimeout(function() {
       i ++

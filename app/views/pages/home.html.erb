@@ -5,6 +5,9 @@
 
 <div class="badger" onclick="hideBadger()">
   <div class="rel">
+    <%= link_to wishes_path, class: "wishes conts" do %>
+      <h3>WISHES</h3>
+    <% end %>
     <%= link_to "https://www.leracshack.com/", target: "_blank", class: "rac conts" do %>
       <h3>If you like<br>melted cheese...</h3>
       <%= image_tag image_path("rac.png"), alt: "Le Rac Shack - Raclette catering specialists", class: "icon" %>
@@ -58,31 +61,7 @@
 
 
 <script>
-  let secs = 30;                  //  set your counter to 1
 
-  function secLoop() {         //  create a loop function
-    document.getElementById("secs").innerText = secs
-    secs--;
-    if (secs > 0) {
-      setTimeout(function(){
-        secLoop();
-      }, 1000)
-    } else {
-      secs = 30
-      setTimeout(function(){
-        secLoop();
-      }, 1000)
-    }
-  }
-
-  secLoop();
-
-  for (x = 1; x < 30; x++) {
-    setTimeout(function(){
-      console.log("up")
-      document.getElementById("secs").innerText = 30 - x
-    },1000)
-  }
 
   document.getElementById("clicky").addEventListener("click", (event) => {
     event.target.style.display = "none";
@@ -91,17 +70,54 @@
   document.getElementById("welcome").addEventListener("click", (event) => {
     event.target.style.display = "none";
   })
-  let field = document.getElementById("field");
-  let valid = field.dataset.valid
-  let invalid = field.dataset.invalid
-  let w = field.clientWidth
-  let h = field.clientHeight
-  let n = 360
-  let a = Math.floor(Math.sqrt(w * h / n));
-  let square_width = Math.floor(Math.min(w / Math.ceil(w / a), h / Math.ceil(h / a)));
+  if (field) {
+    field = document.getElementById("field");
+    valid = field.dataset.valid
+    invalid = field.dataset.invalid
+    w = field.clientWidth
+    h = field.clientHeight
+    n = 360
+    a = Math.floor(Math.sqrt(w * h / n));
+    square_width = Math.floor(Math.min(w / Math.ceil(w / a), h / Math.ceil(h / a)));
 
-  let num = Math.floor(Math.random() * 360)
-  let daisy = Math.floor(Math.random() * num)
+    num = Math.floor(Math.random() * 360)
+    daisy = Math.floor(Math.random() * num)
+  } else {
+    let field = document.getElementById("field");
+    let valid = field.dataset.valid
+    let invalid = field.dataset.invalid
+    let w = field.clientWidth
+    let h = field.clientHeight
+    let n = 360
+    let a = Math.floor(Math.sqrt(w * h / n));
+    let square_width = Math.floor(Math.min(w / Math.ceil(w / a), h / Math.ceil(h / a)));
+
+    let num = Math.floor(Math.random() * 360)
+    let daisy = Math.floor(Math.random() * num)
+
+  }
+
+  if (secs) {
+    secs = 30
+  } else {
+    let secs = 30;
+  }
+
+  function secLoop() {
+    if (document.getElementById("secs")) {
+      setTimeout(function(){
+        secs--
+        if (secs == 0) {
+          secs = 30
+        }
+        document.getElementById("secs").innerText = secs
+        secLoop();
+      }, 1000)
+    }
+  }
+
+  secLoop();
+
   for (i = 0; i < n; i++) {
     if (i == num) {
       field.insertAdjacentHTML("afterbegin",`<div class="leaf ${valid} four_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
@@ -172,5 +188,7 @@
   })
   document.querySelector(".me").addEventListener("click", () => {
     hideVid()
-  })
+  })                  //  set your counter to 1
+
+
 </script>
