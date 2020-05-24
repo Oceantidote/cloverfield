@@ -1,0 +1,62 @@
+<div class="wrapper" id="wishes" data-wishes="<%= @wishes.to_json %>">
+  <%= link_to root_path do %>
+    <h2 class="btn">MAKE ANOTHER WISH</h2>
+  <% end %>
+</div>
+<script>
+  let wishes = document.getElementById("wishes");
+  wishes.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+  let width = wishes.clientWidth
+  let height = wishes.clientHeight
+  const markers = JSON.parse(wishes.dataset.wishes);
+
+  function sample(array) {
+    return array[Math.floor ( Math.random() * array.length )]
+  }
+  let Tcolor = Math.floor(Math.random()*16777215).toString(16);
+  let li_offset = Math.floor(Math.random() * (width - 400))
+  if (li_offset < 0) {
+    li_offset = 0;
+  }
+  let ti_offset = Math.floor(Math.random() * (height - 200))
+  if (ti_offset < 0) {
+    ti_offset = 0;
+  }
+  let element = `<h2 class="wish" id="wish0" style="z-index: 1;color: #${Tcolor};border-color: #${Tcolor};top: ${ti_offset}px; left:${li_offset}px;"><strong>${markers[0]}</strong></h2>`
+  wishes.insertAdjacentHTML("afterbegin",
+    element
+    )
+  setTimeout(function() {
+    document.querySelectorAll(".wish")[0].classList.add("bounce")
+    // setTimeout(function() {
+    //   document.querySelectorAll(".wish")[0].classList.add("fade")
+    // }, 4000)
+  }, 30)
+  let i = 1
+  function myLoop() {
+    i ++
+    setTimeout(function() {
+      let l_offset = Math.floor(Math.random() * (width - 400))
+      if (l_offset < 0) {
+        l_offset = 0;
+      }
+      let t_offset = Math.floor(Math.random() * (height - 200))
+      if (t_offset < 0) {
+        t_offset = 0;
+      }
+      let color = Math.floor(Math.random()*16777215).toString(16);
+      let element = `<h2 class="wish" id="wish${i}" style="z-index: ${i + 1};border-color: #${color}; color: #${color};top: ${t_offset}px; left:${l_offset}px;"><strong>${sample(markers)}</strong></h2>`
+      wishes.insertAdjacentHTML("afterbegin",
+        element
+        )
+      setTimeout(function() {
+        if (document.querySelectorAll(".wish").length > 0) {
+          document.querySelectorAll(".wish")[0].classList.add("bounce")
+        }
+      }, 30)
+      myLoop();
+    }, 1530)
+  }
+
+  myLoop();
+</script>

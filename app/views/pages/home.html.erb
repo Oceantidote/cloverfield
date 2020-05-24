@@ -1,2 +1,133 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="badger" onclick="hideBadger()">
+  <div class="rel">
+    <%= link_to "https://www.lewagon.com/", target: "_blank", class: "wagon conts" do %>
+      <%= image_tag "wagon.png", alt: "Le Wagon", class: "icon" %>
+      <h3 class="wagon-h">Like to know how<br>to build this?</h3>
+    <% end %>
+    <div class="ru conts">
+      <%= image_tag "badger.png", alt: "A lovely Badger", class: "icon" %>
+      <h1 class="wagon-h"><span class="nopoint">For </span><a href="https://www.imdb.com/name/nm6831160/?ref_=fn_al_nm_1" target="_blank"><span class="pink"> Daisy,</span></a><br><span class="nopoint">with ♥️ by</span><br><a class="lenny" target="_blank" href="https://github.com/oceantidote">Lenny</a></h1>
+    </div>
+    <%= link_to "https://www.hoxton-digital.com/", target: "_blank", class: "hd conts" do  %>
+      <h3>Like me to build<br>you something?</h3>
+      <%= image_tag "hd.png", alt: "Hoxton Digital Logo (It's really cool)", class: "icon" %>
+    <% end %>
+  </div>
+</div>
+<div class="welcome" id="welcome">
+  <form>
+    <div id="clicky" class="inner_form">
+      <h1 style="color: black;">FIND A FOUR LEAF CLOVER TO MAKE A WISH</h1>
+      <h3>Be quick though, you only have <span class="secs" id="secs">30</span><span class='secs'> secs</span> until they change place!</h3>
+    </div>
+  </form>
+</div>
+<div class="form" id="form">
+  <form action="/" method="POST" class="inner_form">
+    <h1 class="black">CONGRATULATIONS!</h1>
+    <h3>You found the four leaf clover, time to make a wish...</h3>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+    <input type="text" name="wish[wish]" placeholder="I wish I was a mermaid..." class="inp">
+    <input type="submit" value="MAKE YOUR WISH" class="form-btn">
+  </form>
+</div>
+<div class="field" id="field">
+</div>
+<script>
+  let secs = 30;                  //  set your counter to 1
+
+  function secLoop() {         //  create a loop function
+    document.getElementById("secs").innerText = secs
+    secs--;
+    if (secs > 0) {
+      setTimeout(function(){
+        secLoop();
+      }, 1000)
+    } else {
+      secs = 30
+      setTimeout(function(){
+        secLoop();
+      }, 1000)
+    }
+  }
+
+  secLoop();
+
+  for (x = 1; x < 30; x++) {
+    setTimeout(function(){
+      console.log("up")
+      document.getElementById("secs").innerText = 30 - x
+    },1000)
+  }
+
+  document.getElementById("clicky").addEventListener("click", (event) => {
+    event.target.style.display = "none";
+    document.getElementById("welcome").style.display = "none";
+  })
+  document.getElementById("welcome").addEventListener("click", (event) => {
+    event.target.style.display = "none";
+  })
+  let field = document.getElementById("field");
+  let w = field.clientWidth
+  let h = field.clientHeight
+  let n = 360
+  let a = Math.floor(Math.sqrt(w * h / n));
+  let square_width = Math.floor(Math.min(w / Math.ceil(w / a), h / Math.ceil(h / a)));
+
+  let num = Math.floor(Math.random() * 360)
+  let daisy = Math.floor(Math.random() * num)
+  for (i = 0; i < n; i++) {
+    if (i == num) {
+      field.insertAdjacentHTML("afterbegin",`<div class="leaf four_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
+    } else if ( i == daisy) {
+      field.insertAdjacentHTML("afterbegin",`<div class="daisy" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
+    } else {
+      field.insertAdjacentHTML("afterbegin",`<div class="leaf three_leaf" style="width: ${square_width}px; height: ${square_width}px;transform: rotate(${Math.floor(Math.random() * 360)}deg);"></div>`)
+    }
+  }
+  document.querySelector(".four_leaf").addEventListener("click", () => {
+    document.getElementById("form").classList.toggle("show")
+  })
+
+  function shuffle() {
+    var container = document.getElementById("field");
+    container.classList.toggle("shake")
+    var elementsArray = Array.prototype.slice.call(container.getElementsByClassName('leaf'));
+      elementsArray.forEach(function(element){
+      container.removeChild(element);
+    })
+    shuffleArray(elementsArray);
+    elementsArray.forEach(function(element){
+      container.appendChild(element);
+    })
+    setTimeout(function(){
+      container.classList.toggle("shake")
+    }, 500)
+  }
+
+  function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+      }
+      return array;
+  }
+
+  function myLoop() {
+    setTimeout(function() {
+      shuffle()
+      myLoop();
+    }, 30000)
+  }
+
+  function hideBadger() {
+    document.querySelector(".badger").classList.toggle("show")
+  }
+
+  myLoop();
+  document.querySelector(".daisy").addEventListener("click", () => {
+    hideBadger()
+  })
+</script>

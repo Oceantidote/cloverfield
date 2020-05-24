@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cloverfield</title>
+    <title>Clover</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= favicon_link_tag asset_path('four_leaf.png') %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
