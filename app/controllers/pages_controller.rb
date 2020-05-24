@@ -11,7 +11,7 @@ class PagesController < ApplicationController
 
   def wishes
     @wish = Wish.order(created_at: :desc).pluck(:wish).first
-    @wishes = Wish.order(created_at: :desc).pluck(:wish).shuffle
+    @wishes = Wish.order(created_at: :desc).pluck(:wish)
     @wishes.delete(@wish)
     @wishes.unshift(@wish)
     @wishes.delete("")
