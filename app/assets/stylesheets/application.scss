@@ -188,6 +188,18 @@ body {
   z-index: 6;
   animation: wiggle 2.5s infinite;
 }
+@keyframes spinGrow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2) rotate(360deg);
+  }
+}
+.daisy:hover {
+  cursor: pointer;
+  animation: 1s spinGrow infinite;
+}
 .four_leaf {
   background-size: cover;
   background-image: image-url("four_leaf.png");
@@ -197,14 +209,6 @@ body {
 }
 .leaf {
   animation: wiggle 2.5s infinite;
-}
-@keyframes spinGrow {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(2) rotate(360deg);
-  }
 }
 .four_leaf:hover {
   cursor: pointer;
