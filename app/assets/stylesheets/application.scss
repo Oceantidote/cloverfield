@@ -269,6 +269,7 @@ h3 {
 }
 .wish {
   text-align: center;
+  cursor: default;
   background-color: white;
   padding: 10px;
   /*border-radius: 20px;*/
@@ -278,6 +279,10 @@ h3 {
   opacity: 0.1;
   transition-duration: 2s;
   box-shadow: 2.5px 2.5px 2.5px rgba(0,0,0,0.15);
+}
+.wish:hover {
+  z-index: 9999 !important;
+  transform: scale(1.2);
 }
 .bounce {
   opacity: 1;
