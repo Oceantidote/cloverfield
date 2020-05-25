@@ -28,10 +28,7 @@ class PagesController < ApplicationController
   end
 
   def wishes
-    @wish = Wish.order(created_at: :desc).pluck(:wish).first
-    @wishes = Wish.order(created_at: :desc).pluck(:wish)
-    @wishes.delete(@wish)
-    @wishes.unshift(@wish)
+    @wishes = Wish.order(created_at: :desc).pluck(:wish).reject {|r| r.include?("<")}.map{|r| r.truncate(140)}
     @wishes.delete("")
   end
 
