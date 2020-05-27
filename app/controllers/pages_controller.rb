@@ -13,7 +13,12 @@ class PagesController < ApplicationController
 
 
   def home
-    @topic = TOPICS.keys.sample.to_s
+    if Rails.application.config.session_options[:count]
+      @topic = TOPICS.keys.sample.to_s
+    else
+      @topic = TOPICS.keys.first.to_s
+      Rails.application.config.session_options[:count] = true
+    end
     @valid = @topic
     @invalid = @topic +"_null"
     @bg = @topic + "_bg"
